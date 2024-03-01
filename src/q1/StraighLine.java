@@ -9,14 +9,29 @@ package q1;
  *
  * @author Tam Pham
  */
-public class StraighLine extends Point implements Shape{
+public class StraighLine implements Shape{
     private Point p1;
     private Point p2;
     private String color;
     private String info;
 
+    /**
+     *
+     * @param p1
+     * @param p2
+     * @param color
+     * @param x
+     * @param y
+     * @param color
+     */
+   
+
+    
+
+   
+
     public StraighLine(Point p1, Point p2, String color) {
-        super(p1.getX(),p1.getY(), color);
+       
         this.p1 = p1;
         this.p2 = p2;
         this.color = color;
@@ -46,7 +61,24 @@ public class StraighLine extends Point implements Shape{
         this.color = color;
     }
 
-    
-   
+    @Override
+    public String getInfo() {
+        return info;
+    }
+    @Override
+    public void inputData(){
+        System.out.printf("Add line (%d,%d)->(%d,%d)",p1.getX(),p1.getY(),p2.getX(),p2.getY());
+    }
+    @Override
+    public void draw(){
+        System.out.printf("Line from (%d,%d) to (%d,%d)",p1.getX(),p1.getY(),p2.getX(),p2.getY());
+    }
+   public float getLength(){
+       float length;
+       int POW = 2; 
+    return   length = (float) Math.sqrt(Math.pow(p2.getX()-p1.getX(), 2)+Math.pow(p2.getY()-p1.getY(), 2));
+   }
+
+  
     
 }

@@ -10,8 +10,8 @@ package q1;
  * @author Tam Pham
  */
 public class Point implements Shape{
-    int x;
-    int y ;
+   private int x;
+   private int y;
     private String color;
     private String info;
 

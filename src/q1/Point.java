@@ -52,9 +52,9 @@ public class Point implements Shape{
 
    
     public void draw(){
-        
+        System.out.printf("Point (%d,%d)",this.x,this.y);
     }
     public void inputData(){
-        
+        System.out.printf("Add point(%d,%d)",this.x,this.y);
     }
 }

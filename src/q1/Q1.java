@@ -21,7 +21,7 @@ public class Q1 {
     //--VARIABLES - @STUDENT: DECLARE YOUR VARIABLES HERE:
    private ArrayList<String> S1 = new ArrayList<>();
    private ArrayList<Point> S4 = new ArrayList<>();
-   private ArrayList<StraighLine> S5 = new ArrayList<>();
+   private ArrayList<Straightline> S5 = new ArrayList<>();
    private ArrayList<String> S6 = new ArrayList<>();
    private ArrayList<String> S7 = new ArrayList<>();
     int m = 0;
@@ -95,6 +95,8 @@ public class Q1 {
                         point1.inputData();
                         S4.add(point1);
                         S7.add(point1.getInfo());
+                        point1.draw();
+                        S6.add(point1.getInfo());
                     } else {
                         System.out.println("Invalid format for Point: " + line);
                     }
@@ -103,33 +105,41 @@ public class Q1 {
 
                         Point p1 = new Point(Integer.parseInt(S2[1]), Integer.parseInt(S2[2]), "black");
                         Point p2 = new Point(Integer.parseInt(S2[3]), Integer.parseInt(S2[4]), "black");
-                        StraighLine straighline1 = new StraighLine(p1, p2, "black");
+                        Straightline straighline1 = new Straightline(p1, p2, "black");
                          straighline1.inputData();
                          S5.add(straighline1);
-                        S7.add(straighline1.getInfo());
+                          S7.add(straighline1.getInfo());
+                         straighline1.draw();
+                         S6.add(straighline1.getInfo());
+                       
                     } else {
                         System.out.println("Invalid format for Line: " + line);
                     }
                 } else if (S2[0].equals("Draw")) {
-                    S7.add("---Draw---");
-                    for (Point p : S4) {
-                        p.draw();
-                        S7.add(p.getInfo());
-                        
+                    S7.add("---Draw---\n");
+//                    for (Straightline s : S5) {
+//                        s.draw();
+//                        S7.add(s.getInfo());
+//                    }
+//                    for (Point p : S4) {
+//                        p.draw();
+//                        S7.add(p.getInfo());
+//                        
+//                    }
+                    for(String ss : S6){
+                        S7.add(ss);
                     }
-                    for (StraighLine s : S5) {
-                        s.draw();
-                        S7.add(s.getInfo());
-                    }
+                    
                     S7.add("----------\n");
                 } else if (S2[0].equals("Clear")) {
                     S4.clear();
                     S5.clear();
+                    S6.clear();
                     S7.add("* Remove all shape\n");
                 } else if (Integer.parseInt(S2[0])>0) {
                     int n = Integer.parseInt(S2[0]);
                     if (n > 0 && n < 100) {
-                        S7.add(S2[0]+"\n");
+//                         S7.add(S2[0]+"\n");
                     }
                 }
 

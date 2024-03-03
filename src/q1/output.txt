@@ -1,21 +1,22 @@
-4
 Add point(0,1)
 Add line (10,0)->(-5,7)
----Draw---Point (0,1)
-Line from (10,0)to(-5,7)
+---Draw---
+Point (0,1)
+Line from (10,0) to (-5,7)
 ----------
 * Remove all shape
-8
 Add point(-5,-1)
----Draw---Point (-5,-1)
+---Draw---
+Point (-5,-1)
 ----------
 Add line (1,2)->(10,-5)
 * Remove all shape
 Add line (3,-1)->(2,9)
 Add point(1,1)
 Add point(2,5)
----Draw---Point (1,1)
+---Draw---
+Line from (3,-1) to (2,9)
+Point (1,1)
 Point (2,5)
-Line from (3,-1)to(2,9)
 ----------
 

@@ -9,7 +9,7 @@ package q1;
  *
  * @author Tam Pham
  */
-public class StraighLine implements Shape{
+public class Straightline implements Shape{
     private Point p1;
     private Point p2;
     private String color;
@@ -30,7 +30,7 @@ public class StraighLine implements Shape{
 
    
 
-    public StraighLine(Point p1, Point p2, String color) {
+    public Straightline(Point p1, Point p2, String color) {
        
         this.p1 = p1;
         this.p2 = p2;
@@ -73,7 +73,7 @@ public class StraighLine implements Shape{
     @Override
     public void draw(){
         
-        info = "Line from ("+p1.getX()+","+p1.getY()+")"+"to"+"("+p2.getX()+","+p2.getY()+")\n";
+        info = "Line from ("+p1.getX()+","+p1.getY()+")"+" to "+"("+p2.getX()+","+p2.getY()+")\n";
     }
    public float getLength(){
        float length;

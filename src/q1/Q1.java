@@ -15,8 +15,8 @@ import java.util.Scanner;
 public class Q1 {
 
     //Change the name of input and output file based on practical paper
-    String inputFile = "src/q1/input.txt";
-    String outputFile = "src/q1/output.txt";
+    String inputFile = "input.txt";
+    String outputFile = "output.txt";
 
     //--VARIABLES - @STUDENT: DECLARE YOUR VARIABLES HERE:
    private ArrayList<String> S1 = new ArrayList<>();

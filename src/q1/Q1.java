@@ -117,15 +117,7 @@ public class Q1 {
                     }
                 } else if (S2[0].equals("Draw")) {
                     S7.add("---Draw---\n");
-//                    for (Straightline s : S5) {
-//                        s.draw();
-//                        S7.add(s.getInfo());
-//                    }
-//                    for (Point p : S4) {
-//                        p.draw();
-//                        S7.add(p.getInfo());
-//                        
-//                    }
+//                  
                     for(String ss : S6){
                         S7.add(ss);
                     }

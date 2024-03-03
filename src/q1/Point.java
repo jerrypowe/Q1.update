@@ -10,8 +10,8 @@ package q1;
  * @author Tam Pham
  */
 public class Point implements Shape{
-   private int x;
-   private int y;
+    private int x;
+    private int y;
     private String color ;
     private String info;
 
@@ -56,10 +56,12 @@ public class Point implements Shape{
    
    @Override
     public void draw(){
-        System.out.printf("Point (%d,%d)\n",this.x,this.y);
+        
+        info = "Point (" +this.x+","+this.y+")\n";
     }
    @Override
     public void inputData(){
-        System.out.printf("Add point(%d,%d)\n",this.x,this.y);
-    }
+        
+        info = "Add point(" + this.x + "," + this.y+ ")\n";
+}
 }

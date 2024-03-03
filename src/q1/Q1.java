@@ -19,10 +19,11 @@ public class Q1 {
     String outputFile = "src/q1/output.txt";
 
     //--VARIABLES - @STUDENT: DECLARE YOUR VARIABLES HERE:
-    ArrayList<String> S1 = new ArrayList<>();
-    ArrayList<Point> S4 = new ArrayList<>();
-    ArrayList<StraighLine> S5 = new ArrayList<>();
-    ArrayList<String> S6 = new ArrayList<>();
+   private ArrayList<String> S1 = new ArrayList<>();
+   private ArrayList<Point> S4 = new ArrayList<>();
+   private ArrayList<StraighLine> S5 = new ArrayList<>();
+   private ArrayList<String> S6 = new ArrayList<>();
+   private ArrayList<String> S7 = new ArrayList<>();
     int m = 0;
     //--FIXED PART - DO NOT EDIT ANY THINGS HERE--
     //--START FIXED PART--------------------------    
@@ -93,6 +94,7 @@ public class Q1 {
                         Point point1 = new Point(Integer.parseInt(S2[1]), Integer.parseInt(S2[2]), "black");
                         point1.inputData();
                         S4.add(point1);
+                        S7.add(point1.getInfo());
                     } else {
                         System.out.println("Invalid format for Point: " + line);
                     }
@@ -102,27 +104,32 @@ public class Q1 {
                         Point p1 = new Point(Integer.parseInt(S2[1]), Integer.parseInt(S2[2]), "black");
                         Point p2 = new Point(Integer.parseInt(S2[3]), Integer.parseInt(S2[4]), "black");
                         StraighLine straighline1 = new StraighLine(p1, p2, "black");
-                        straighline1.inputData();
-                        S5.add(straighline1);
+                         straighline1.inputData();
+                         S5.add(straighline1);
+                        S7.add(straighline1.getInfo());
                     } else {
                         System.out.println("Invalid format for Line: " + line);
                     }
                 } else if (S2[0].equals("Draw")) {
-                    System.out.println("---Draw---");
+                    S7.add("---Draw---");
                     for (Point p : S4) {
                         p.draw();
+                        S7.add(p.getInfo());
+                        
                     }
-                    for (StraighLine sl : S5) {
-                        sl.draw();
+                    for (StraighLine s : S5) {
+                        s.draw();
+                        S7.add(s.getInfo());
                     }
+                    S7.add("----------\n");
                 } else if (S2[0].equals("Clear")) {
                     S4.clear();
                     S5.clear();
-                    System.out.println("* Remove all shape");
+                    S7.add("* Remove all shape\n");
                 } else if (Integer.parseInt(S2[0])>0) {
                     int n = Integer.parseInt(S2[0]);
                     if (n > 0 && n < 100) {
-                        System.out.println(n);
+                        S7.add(S2[0]+"\n");
                     }
                 }
 
@@ -145,14 +152,13 @@ public class Q1 {
 
             //OUTPUT - @STUDENT: ADD YOUR CODE FOR OUTPUT HERE:
             // Ghi thông tin từ S4 vào tập tin
-            for (Point p : S4) {
-                fw.write("Point: " + p.getX() + ", " + p.getY() + ", " + p.getColor() + "\n");
-            }
-
+//            for (Point p : S4) {
+//                fw.write("Point: " + p.getX() + ", " + p.getY()  + "\n");
+//            }
+           
             // Ghi thông tin từ S5 vào tập tin
-            for (StraighLine sl : S5) {
-                fw.write("Line: " + sl.getP1().getX() + ", " + sl.getP1().getY() + " - "
-                        + sl.getP2().getX() + ", " + sl.getP2().getY() + ", " + sl.getColor() + "\n");
+            for (String sl : S7) {
+              fw.write(sl);
             }
 
             fw.write("\n");

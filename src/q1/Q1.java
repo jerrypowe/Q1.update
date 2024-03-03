@@ -15,13 +15,14 @@ import java.util.Scanner;
 public class Q1 {
 
     //Change the name of input and output file based on practical paper
-    String inputFile = "input.txt";
-    String outputFile = "output.txt";
+    String inputFile = "src/q1/input.txt";
+    String outputFile = "src/q1/output.txt";
 
     //--VARIABLES - @STUDENT: DECLARE YOUR VARIABLES HERE:
-    ArrayList<String> S1 = new ArrayList<String>();
-    ArrayList<Point> S4 = new ArrayList<Point>();
-    ArrayList<StraighLine> S5 = new ArrayList<StraighLine>();
+    ArrayList<String> S1 = new ArrayList<>();
+    ArrayList<Point> S4 = new ArrayList<>();
+    ArrayList<StraighLine> S5 = new ArrayList<>();
+    ArrayList<String> S6 = new ArrayList<>();
     int m = 0;
     //--FIXED PART - DO NOT EDIT ANY THINGS HERE--
     //--START FIXED PART--------------------------    
@@ -45,12 +46,20 @@ public class Q1 {
             //--END FIXED PART----------------------------
 
             //INPUT - @STUDENT: ADD YOUR CODE FOR INPUT HERE:
-            String n;
             while (sc.hasNextLine()) {
-
-                String line = sc.nextLine();
-                S1.add(line);
-
+                int value = Integer.parseInt(sc.nextLine());
+//                System.out.println( value);
+                // Read and store data based on the value
+                ArrayList<String> data = new ArrayList<>();
+                data.add(Integer.toString(value));
+                for (int i = 0; i < value; i++) {
+                    if (sc.hasNextLine()) {
+                        String line = sc.nextLine();
+                        data.add(line);
+                    }
+                }
+                // Add data to S1
+                S1.addAll(data);
             }
 
             //lưu vào array1 các lựa chọn
@@ -75,68 +84,79 @@ public class Q1 {
         //--END FIXED PART----------------------------
 
         //ALGORITHM - @STUDENT: ADD YOUR CODE HERE:
-        
-        for (int i = 0; i < S1.size(); i++) {
-            int n = 0;
-            
-            String[] S2;
-            S2 = S1.get(i).split(" ");
+        for (String line : S1) {
+            String[] S2 = line.split(" ");
 
-            if (S2.length > 1) {
+            if (S2.length > 0) {
                 if (S2[0].equals("Point")) {
-                    System.out.printf("Add point(%d,%d)",S2[1],S2[2]);
-                    
-                    String color = S2[3];
-                    Point point1 = new Point(Integer.parseInt(S2[1]), Integer.parseInt(S2[2]),S2[3]);
-                    S4.add(point1);
-                   
+                    if (S2.length >= 3) {
+                        Point point1 = new Point(Integer.parseInt(S2[1]), Integer.parseInt(S2[2]), "black");
+                        point1.inputData();
+                        S4.add(point1);
+                    } else {
+                        System.out.println("Invalid format for Point: " + line);
+                    }
                 } else if (S2[0].equals("Line")) {
-                    System.out.printf("Add line(%d,%d)->(%d,%d)",S2[1],S2[2],S2[3],S2[4]);
-                    String color = S2[5];
-                    Point p1 = new Point(Integer.parseInt(S2[1]), Integer.parseInt(S2[2]), color);
-                    Point p2 = new Point(Integer.parseInt(S2[3]), Integer.parseInt(S2[4]), color);
-                    StraighLine straighline1 = new StraighLine(p1, p2, color);
-                    S5.add(straighline1);
-                }
-            } else if (S2.length == 1) {
-                n = Integer.parseInt(S2[0]);
-                if (n >= 1 && n <= 100) {
-                    m = n;
-                } else if (n == 0) {
-                    if (S2[0].equals("Draw")) {
-                        System.out.println("---Draw---");
-                        S4.get(i).draw();
-                        S5.get(i).draw();
+                    if (S2.length >= 5) {
 
-                    } else if (S2[0].equals("Clear")) {
-                        S4.clear();
-                        S5.clear();
-                        System.out.println("* Remove all shape");
+                        Point p1 = new Point(Integer.parseInt(S2[1]), Integer.parseInt(S2[2]), "black");
+                        Point p2 = new Point(Integer.parseInt(S2[3]), Integer.parseInt(S2[4]), "black");
+                        StraighLine straighline1 = new StraighLine(p1, p2, "black");
+                        straighline1.inputData();
+                        S5.add(straighline1);
+                    } else {
+                        System.out.println("Invalid format for Line: " + line);
+                    }
+                } else if (S2[0].equals("Draw")) {
+                    System.out.println("---Draw---");
+                    for (Point p : S4) {
+                        p.draw();
+                    }
+                    for (StraighLine sl : S5) {
+                        sl.draw();
+                    }
+                } else if (S2[0].equals("Clear")) {
+                    S4.clear();
+                    S5.clear();
+                    System.out.println("* Remove all shape");
+                } else if (Integer.parseInt(S2[0])>0) {
+                    int n = Integer.parseInt(S2[0]);
+                    if (n > 0 && n < 100) {
+                        System.out.println(n);
                     }
                 }
 
+            } else {
+                System.out.println("Invalid input: " + line);
             }
+        }
 
-            //--FIXED PART - DO NOT EDIT ANY THINGS HERE--
-            //--START FIXED PART-------------------------- 
-        }}
-        /**
-         * Write result into output file
-         */
+        //--FIXED PART - DO NOT EDIT ANY THINGS HERE--
+        //--START FIXED PART-------------------------- 
+    }
+
+    /**
+     * Write result into output file
+     */
     public void printResult() {
         try {
             FileWriter fw = new FileWriter(fo);
             //--END FIXED PART----------------------------
 
             //OUTPUT - @STUDENT: ADD YOUR CODE FOR OUTPUT HERE:
-            fw.write(outputFile);
-            for (int i = 0; i < S1.size(); i++) {
-                
-                this.S4.get(i).inputData();
-                StraighLine straighline = this.S5.get(i).;
-                
+            // Ghi thông tin từ S4 vào tập tin
+            for (Point p : S4) {
+                fw.write("Point: " + p.getX() + ", " + p.getY() + ", " + p.getColor() + "\n");
             }
 
+            // Ghi thông tin từ S5 vào tập tin
+            for (StraighLine sl : S5) {
+                fw.write("Line: " + sl.getP1().getX() + ", " + sl.getP1().getY() + " - "
+                        + sl.getP2().getX() + ", " + sl.getP2().getY() + ", " + sl.getColor() + "\n");
+            }
+
+            fw.write("\n");
+//            fw.append();
             //--FIXED PART - DO NOT EDIT ANY THINGS HERE--
             //--START FIXED PART-------------------------- 
             fw.flush();
@@ -145,8 +165,6 @@ public class Q1 {
             System.out.println("Output Exception # " + ex);
         }
     }
-    
-    
 
     /**
      * @param args the command line arguments

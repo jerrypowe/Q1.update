@@ -34,7 +34,7 @@ public class StraighLine implements Shape{
        
         this.p1 = p1;
         this.p2 = p2;
-        this.color = color;
+        this.color = "black";
     }
 
     public Point getP1() {
@@ -67,11 +67,11 @@ public class StraighLine implements Shape{
     }
     @Override
     public void inputData(){
-        System.out.printf("Add line (%d,%d)->(%d,%d)",p1.getX(),p1.getY(),p2.getX(),p2.getY());
+        System.out.printf("Add line (%d,%d)->(%d,%d)\n",p1.getX(),p1.getY(),p2.getX(),p2.getY());
     }
     @Override
     public void draw(){
-        System.out.printf("Line from (%d,%d) to (%d,%d)",p1.getX(),p1.getY(),p2.getX(),p2.getY());
+        System.out.printf("Line from (%d,%d) to (%d,%d)\n",p1.getX(),p1.getY(),p2.getX(),p2.getY());
     }
    public float getLength(){
        float length;

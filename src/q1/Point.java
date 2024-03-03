@@ -12,15 +12,17 @@ package q1;
 public class Point implements Shape{
    private int x;
    private int y;
-    private String color;
+    private String color ;
     private String info;
 
     public Point(int x, int y, String color) {
         this.x = x;
         this.y = y;
-        this.color = color;
+        this.color = "black";
         
     }
+
+   
 
     public int getX() {
         return x;
@@ -46,15 +48,18 @@ public class Point implements Shape{
         this.color = color;
     }
 
+   @Override
     public String getInfo() {
         return info;
     }
 
    
+   @Override
     public void draw(){
-        System.out.printf("Point (%d,%d)",this.x,this.y);
+        System.out.printf("Point (%d,%d)\n",this.x,this.y);
     }
+   @Override
     public void inputData(){
-        System.out.printf("Add point(%d,%d)",this.x,this.y);
+        System.out.printf("Add point(%d,%d)\n",this.x,this.y);
     }
 }
